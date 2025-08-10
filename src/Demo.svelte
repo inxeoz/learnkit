@@ -2,8 +2,65 @@
     let selectedCard: number = -1;
 </script>
 
-<style>
+<div class="container">
+    <div class="top">
+        <h1>START<br />PRACTICE</h1>
+        <button class="button">CONTINUE</button>
+        <div class="quote">
+            AN IDIOT WHO PRACTICES CAN BEAT A GENIUS WHO DOESN’T.
+        </div>
+    </div>
 
+    <div class="scroll-section">
+        {#each [1, 2, 3, 4] as id (id)}
+            <div
+                class="cards {selectedCard === id ? 'expanded' : ''}"
+                style="background-color: {id === 1 ? '#5b3b36' : '#1a3c65'}"
+                on:click={() => {
+                    selectedCard = selectedCard === id ? -1 : id;
+                    console.log(`Card ${id} clicked`);
+                }}
+            >
+                <div class="card-title">{id === 1 ? "RUST\nLANG" : "DSA"}</div>
+                <img
+                    src={id === 1
+                        ? "https://www.rust-lang.org/static/images/rust-logo-blk.svg"
+                        : "https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg"}
+                    alt="icon"
+                />
+            </div>
+        {/each}
+    </div>
+
+    <div class="separator-container">
+        <div class="separator"></div>
+    </div>
+
+    <div class="center">
+        <button class="button">ADD NEW</button>
+    </div>
+
+    <div class="navbar">
+        <button
+            class:active={selectedCard === 100}
+            on:click={() => (selectedCard = 100)}>🏠</button
+        >
+        <button
+            class:active={selectedCard === 101}
+            on:click={() => (selectedCard = 101)}>➕</button
+        >
+        <button
+            class:active={selectedCard === 102}
+            on:click={() => (selectedCard = 102)}>🚀</button
+        >
+        <button
+            class:active={selectedCard === 103}
+            on:click={() => (selectedCard = 103)}>⚙️</button
+        >
+    </div>
+</div>
+
+<style>
     .container {
         display: flex;
         flex-direction: column;
@@ -16,7 +73,9 @@
         flex-shrink: 0;
         padding: 2rem;
         border: 2px solid #00ff66;
-        font-family: JetBrains Mono, monospace;
+        font-family:
+            JetBrains Mono,
+            monospace;
     }
 
     .button {
@@ -72,7 +131,7 @@
         display: flex;
         justify-content: space-around;
         background: #21252d;
-        border: 3px solid #4a6fa5FF;
+        border: 3px solid #4a6fa5ff;
         height: 80px;
         flex-shrink: 0;
     }
@@ -96,7 +155,7 @@
         width: 286px;
         height: 5px;
         border-radius: 17px;
-        background: #4a6fa5FF;
+        background: #4a6fa5ff;
     }
 
     .separator-container {
@@ -112,51 +171,4 @@
         justify-content: center;
         flex-shrink: 0;
     }
-
 </style>
-
-<div class="container">
-
-    <div class="top">
-        <h1>START<br />PRACTICE</h1>
-        <button class="button">CONTINUE</button>
-        <div class="quote">
-            AN IDIOT WHO PRACTICES CAN BEAT A GENIUS WHO DOESN’T.
-        </div>
-    </div>
-
-    <div class="scroll-section">
-        {#each [1, 2, 3, 4] as id (id)}
-            <div
-                    class="cards {selectedCard === id ? 'expanded' : ''}"
-                    style="background-color: {id === 1 ? '#5b3b36' : '#1a3c65'}"
-                    on:click={() => { selectedCard = selectedCard === id ? -1 : id ; console.log(`Card ${id} clicked`) }}
-            >
-                <div class="card-title">{id === 1 ? 'RUST\nLANG' : 'DSA'}</div>
-                <img
-                        src={
-						id === 1
-							? 'https://www.rust-lang.org/static/images/rust-logo-blk.svg'
-							: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg'
-					}
-                        alt="icon"
-                />
-            </div>
-        {/each}
-    </div>
-
-    <div class="separator-container">
-        <div class="separator"></div>
-    </div>
-
-    <div class="center">
-        <button class="button">ADD NEW</button>
-    </div>
-
-    <div class="navbar">
-        <button class:active={selectedCard === 100} on:click={() => selectedCard = 100}>🏠</button>
-        <button class:active={selectedCard === 101} on:click={() => selectedCard = 101}>➕</button>
-        <button class:active={selectedCard === 102} on:click={() => selectedCard = 102}>🚀</button>
-        <button class:active={selectedCard === 103} on:click={() => selectedCard = 103}>⚙️</button>
-    </div>
-</div>

@@ -1,12 +1,42 @@
 <script lang="ts">
-    let selected = 'home';
+    let selected = "home";
     let selectedCard: number;
-
-
 </script>
 
-<style>
+<div class="container">
+    <div class="top">
+        <h1>START<br />PRACTICE</h1>
+        <button class="button">CONTINUE</button>
+        <div class="quote">
+            AN IDIOT WHO PRACTICES CAN BEAT A GENIUS WHO DOESN’T.
+        </div>
+    </div>
 
+    <div class="separator-container">
+        <div class="separator"></div>
+    </div>
+
+    <div class="navbar">
+        <button
+            class:active={selected === "home"}
+            on:click={() => (selected = "home")}>🏠</button
+        >
+        <button
+            class:active={selected === "add"}
+            on:click={() => (selected = "add")}>➕</button
+        >
+        <button
+            class:active={selected === "rocket"}
+            on:click={() => (selected = "rocket")}>🚀</button
+        >
+        <button
+            class:active={selected === "settings"}
+            on:click={() => (selected = "settings")}>⚙️</button
+        >
+    </div>
+</div>
+
+<style>
     .container {
         display: flex;
         flex-direction: column;
@@ -19,8 +49,9 @@
         flex: 1;
         padding: 2rem;
         border: 2px solid #00ff66;
-        font-family: JetBrains Mono,monospace;
-
+        font-family:
+            JetBrains Mono,
+            monospace;
     }
     .button {
         background: #00cc66;
@@ -44,7 +75,7 @@
     }
 
     .cards {
-        background: #4a6fa5;;
+        background: #4a6fa5;
         padding: 1.5rem;
         color: white;
         display: flex;
@@ -74,16 +105,14 @@
         align-content: stretch;
         justify-content: space-around;
         background: #21252d;
-        border: 3px solid #4a6fa5FF;
+        border: 3px solid #4a6fa5ff;
         height: 80px;
-
     }
 
     .navbar > button {
         flex: 1;
     }
     .navbar button {
-
         border: none;
         color: #888;
         font-size: 1.5rem;
@@ -91,7 +120,6 @@
 
         height: 80px;
         /*width: 96px;*/
-
     }
     .navbar button.active {
         color: #00ff66;
@@ -101,13 +129,11 @@
         /*width: 96px;*/
     }
 
-
     .separator {
         width: 286px;
         height: 5px;
         border-radius: 17px 17px 17px 17px;
-        background: #4a6fa5FF;
-
+        background: #4a6fa5ff;
     }
 
     .separator-container {
@@ -118,47 +144,3 @@
         margin-bottom: 10px;
     }
 </style>
-
-<div class="container">
-    <div class="top">
-        <h1>START<br />PRACTICE</h1>
-        <button class="button">CONTINUE</button>
-        <div class="quote">
-            AN IDIOT WHO PRACTICES CAN BEAT A GENIUS WHO DOESN’T.
-        </div>
-    </div>
-
-    <div class="separator-container">
-        <div class="separator"> </div>
-    </div>
-
-
-    <div class="scroll-section">
-        {#each [1, 2, 3, 4] as id (id)}
-            <div
-                    class="cards {selectedCard === id ? 'expanded' : ''}"
-                    style="background-color: {id === 1 ? '#5b3b36' : '#1a3c65'}"
-                    on:click={() => selectedCard = selectedCard === id ? -1 : id}
-            >
-                <div class="card-title">{id === 1 ? 'RUST\nLANG' : 'DSA'}</div>
-                <img src={id === 1
-					? 'https://www.rust-lang.org/static/images/rust-logo-blk.svg'
-					: 'https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg'}
-                     alt="icon"
-                />
-            </div>
-        {/each}
-    </div>
-
-    <div class="navbar">
-        <button class:active={selected === 'home'}  on:click={() => selected = 'home'}>🏠</button>
-        <button class:active={selected === 'add'} on:click={() => selected = 'add'}>➕</button>
-        <button class:active={selected === 'rocket'} on:click={() => selected = 'rocket'}>🚀</button>
-        <button class:active={selected === 'settings'} on:click={() => selected = 'settings'}>⚙️</button>
-    </div>
-</div>
-
-
-
-
-
